@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Extension</title>
+  <style>
+    body {
+      width: 750px;
+      height: 550px;
+      background-color: black; /* Set the background color to black */
+      overflow: hidden; /* Hide overflow content */
+      position: relative; /* Set position relative for absolute positioning of pseudo-elements */
+    }
+    body::before {
+      content: ""; /* Create a pseudo-element */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* Make pseudo-element not interactable */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 600 500' fill='%23fff'%3E%3Ccircle cx='100' cy='50' r='2'/%3E%3Ccircle cx='400' cy='100' r='3'/%3E%3Ccircle cx='300' cy='200' r='1.5'/%3E%3Ccircle cx='200' cy='300' r='2.5'/%3E%3Ccircle cx='500' cy='400' r='2'/%3E%3Ccircle cx='550' cy='150' r='1'/%3E%3Ccircle cx='50' cy='400' r='3'/%3E%3Ccircle cx='500' cy='50' r='2'/%3E%3Ccircle cx='150' cy='250' r='2'/%3E%3Ccircle cx='450' cy='350' r='1.5'/%3E%3C/svg%3E"); /* Use an SVG image as background */
+      animation: stars 5s infinite; /* Apply the stars animation */
+    }
+    @keyframes stars {
+      0% { opacity: 0; } /* Start with no stars */
+      50% { opacity: 1; } /* Some stars appear */
+      100% { opacity: 0; } /* All stars disappear */
+    }
+    .larger {
+      width: 300px; /* Define the larger width */
+      height: 400px; /* Define the larger height */
+    }
+    h1 {
+      font-family: Arial, sans-serif;
+      color: #333;
+      cursor: pointer; /* Add cursor pointer to indicate clickability */
+    }
+    img {
+      width: 500px; /* Adjust width */
+      height: auto; /* Maintain aspect ratio */
+      position: absolute; /* Position the image */
+      top: 50%; /* Center vertically */
+      left: 50%; /* Center horizontally */
+      transform: translate(-50%, -50%); /* Center the image */
+      animation: pulse 2s infinite; /* Apply the pulse animation */
+    }
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); } /* Start and end with no scale */
+      50% { transform: translate(-50%, -50%) scale(1.1); } /* Scale up in the middle */
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var h1Element = document.querySelector('h1');
+
+      h1Element.addEventListener('click', function () {
+        var bodyElement = document.querySelector('body');
+        bodyElement.classList.toggle('larger');
+      });
+    });
+  </script>
+</head>
+<body>
+  <img src="CyberVault.png" alt="Image">
+</body>
+</html>
